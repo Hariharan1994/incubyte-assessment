@@ -20,6 +20,12 @@ public class StringCalculator {
 			return 0; // For an empty string it will return 0.
 		}
 
+		if (inputString.startsWith("//")) {
+			String delimeterInput = inputString.substring(2, inputString.indexOf("\n"));
+			inputString = inputString.substring(inputString.indexOf("\n") + 1, inputString.length());
+			inputString = inputString.replace(delimeterInput, ",");
+		}
+
 		String[] inputArray = inputString.split("[,\n]"); // Split by both commas and newLines
 
 		if (inputArray.length == 1) {
