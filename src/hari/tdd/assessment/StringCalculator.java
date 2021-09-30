@@ -20,7 +20,7 @@ public class StringCalculator {
 			return 0; // For an empty string it will return 0.
 		}
 
-		String[] inputArray = inputString.split(",");
+		String[] inputArray = inputString.split("[,\n]"); // Split by both commas and newLines
 
 		if (inputArray.length == 1) {
 			return getIntValue(inputString); // For single string, directly return value
