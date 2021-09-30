@@ -1,5 +1,10 @@
 package hari.tdd.assessment;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import hari.tdd.exception.CustomizeException;
+
 /**
  * This is a simple StringCalculator for TDD KATA exercise
  * 
@@ -27,16 +32,43 @@ public class StringCalculator {
 		}
 
 		String[] inputArray = inputString.split("[,\n]"); // Split by both commas and newLines
+		List<Integer> positiveList = getValidPositiveNumbers(inputArray);
 
-		if (inputArray.length == 1) {
+		if (positiveList.size() == 1) {
 			return getIntValue(inputString); // For single string, directly return value
 		}
 
 		int sumValue = 0;
-		for (String inputNum : inputArray) { // For adding n numbers (more than 1)
-			sumValue = sumValue + getIntValue(inputNum);
+		for (int inputNum : positiveList) { // For adding n numbers (more than 1)
+			sumValue = sumValue + inputNum;
 		}
 		return sumValue;
+	}
+
+	/**
+	 * This method is used to validate the array input and get the positive number.
+	 * If negative number is available, CustomizeException will be thrown.
+	 * 
+	 * @param inputArray
+	 * @return positiveInputList
+	 */
+	private List<Integer> getValidPositiveNumbers(String[] inputArray) {
+		List<Integer> positiveList = new ArrayList<>();
+		List<Integer> negativeList = new ArrayList<>();
+		for (String inputString : inputArray) {
+			int inputNum = getIntValue(inputString);
+			if (inputNum < 0) {
+				negativeList.add(inputNum);
+			} else {
+				positiveList.add(inputNum);
+			}
+		}
+
+		if (!negativeList.isEmpty()) {
+			throw new CustomizeException(String.format("negatives not allowed - %s", negativeList));
+		} else {
+			return positiveList;
+		}
 	}
 
 	/**

@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import hari.tdd.assessment.StringCalculator;
+import hari.tdd.exception.CustomizeException;
 
 /**
  * This is used to execute the JUNIT.
@@ -59,6 +60,12 @@ public class StringCalculatorTest {
 		assertEquals(stringCalculator.add("//#$\n1#$2#$3"), 6);
 
 		assertEquals(stringCalculator.add("//-$^$-\n1-$^$-2-$^$-3"), 6);
+	}
+
+	// TASK 5 - Calling Add with a negative number will throw an exception
+	@Test(expected = CustomizeException.class)
+	public void testNegativeNumbers() {
+		stringCalculator.add("10,-20,30,-40");
 	}
 
 }
