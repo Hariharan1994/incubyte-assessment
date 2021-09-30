@@ -74,4 +74,11 @@ public class StringCalculatorTest {
 		assertEquals(stringCalculator.add("2,1001"), 2);
 	}
 
+	// TASK 7 - Delimiters can be of any length with the format: “//[delimiter]\n”
+	@Test
+	public void testDelimeterLength() {
+		assertEquals(stringCalculator.add("//[***]\n1***2***3"), 6);
+		assertEquals(stringCalculator.add("//[-$^$-]\n1-$^$-2-$^$-3"), 6);
+	}
+
 }
