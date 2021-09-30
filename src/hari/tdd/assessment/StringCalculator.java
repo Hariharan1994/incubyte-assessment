@@ -26,7 +26,11 @@ public class StringCalculator {
 			return getIntValue(inputString); // For single string, directly return value
 		}
 
-		return getIntValue(inputArray[0]) + getIntValue(inputArray[1]); // For 2 numbers, sum its value
+		int sumValue = 0;
+		for (String inputNum : inputArray) { // For adding n numbers (more than 1)
+			sumValue = sumValue + getIntValue(inputNum);
+		}
+		return sumValue;
 	}
 
 	/**

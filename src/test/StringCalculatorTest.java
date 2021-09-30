@@ -22,6 +22,7 @@ public class StringCalculatorTest {
 		stringCalculator = new StringCalculator();
 	}
 
+	// TASK 1
 	@Test
 	public void testEmptyString() {
 		assertEquals(stringCalculator.add(""), 0);
@@ -35,6 +36,12 @@ public class StringCalculatorTest {
 	@Test
 	public void testTwoNumbers() {
 		assertEquals(stringCalculator.add("10,20"), 30);
+	}
+
+	// TASK 2
+	@Test
+	public void testMoreNumbers() {
+		assertEquals(stringCalculator.add("10,20,30,40"), 100);
 	}
 
 }
