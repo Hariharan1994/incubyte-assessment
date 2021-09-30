@@ -60,7 +60,7 @@ public class StringCalculator {
 			if (inputNum < 0) {
 				negativeList.add(inputNum);
 			} else {
-				positiveList.add(inputNum);
+				positiveList.add((inputNum > 1000) ? 0 : inputNum); // Numbers > 1000 should be ignored,
 			}
 		}
 
