@@ -38,10 +38,16 @@ public class StringCalculatorTest {
 		assertEquals(stringCalculator.add("10,20"), 30);
 	}
 
-	// TASK 2
+	// TASK 2 - Allow the Add method to handle an unknown amount of numbers
 	@Test
 	public void testMoreNumbers() {
 		assertEquals(stringCalculator.add("10,20,30,40"), 100);
+	}
+
+	// TASK 3 - Allow the new lines between numbers (instead of commas)
+	@Test
+	public void testNumbersWithNewLines() {
+		assertEquals(stringCalculator.add("10,20\n30,40"), 100);
 	}
 
 }
