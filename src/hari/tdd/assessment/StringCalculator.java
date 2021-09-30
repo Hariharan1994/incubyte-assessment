@@ -26,7 +26,7 @@ public class StringCalculator {
 		}
 
 		if (inputString.startsWith("//")) {
-			String delimeterInput = inputString.substring(2, inputString.indexOf("\n"));
+			String delimeterInput = getDelimeterInput(inputString);
 			inputString = inputString.substring(inputString.indexOf("\n") + 1, inputString.length());
 			inputString = inputString.replace(delimeterInput, ",");
 		}
@@ -43,6 +43,23 @@ public class StringCalculator {
 			sumValue = sumValue + inputNum;
 		}
 		return sumValue;
+	}
+
+	/**
+	 * This method is used to split the delimeterInput from input String
+	 * 
+	 * @param inputString
+	 * @return delimeterInput
+	 */
+	private String getDelimeterInput(String inputString) {
+		String delimeterInput = inputString.substring(2, inputString.indexOf("\n"));
+		if (delimeterInput.startsWith("[")) {
+			delimeterInput = delimeterInput.substring(1, delimeterInput.length());
+		}
+		if (delimeterInput.endsWith("]")) {
+			delimeterInput = delimeterInput.substring(0, delimeterInput.length() - 1);
+		}
+		return delimeterInput;
 	}
 
 	/**
