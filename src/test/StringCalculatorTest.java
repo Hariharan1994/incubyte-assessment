@@ -68,4 +68,10 @@ public class StringCalculatorTest {
 		stringCalculator.add("10,-20,30,-40");
 	}
 
+	// TASK 6 - Numbers bigger than 1000 should be ignored, so adding 2 + 1001 = 2
+	@Test
+	public void testLargerNumbers() {
+		assertEquals(stringCalculator.add("2,1001"), 2);
+	}
+
 }
