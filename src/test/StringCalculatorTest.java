@@ -50,4 +50,15 @@ public class StringCalculatorTest {
 		assertEquals(stringCalculator.add("10,20\n30,40"), 100);
 	}
 
+	// TASK 4 - Support different delimiters “//[delimiter]\n[numbers…]”
+	@Test
+	public void testDifferentDelimiters() {
+		assertEquals(stringCalculator.add("//;\n1;2"), 3); // where the default delimiter is ‘;’
+		assertEquals(stringCalculator.add("//#\n1#2"), 3);
+
+		assertEquals(stringCalculator.add("//#$\n1#$2#$3"), 6);
+
+		assertEquals(stringCalculator.add("//-$^$-\n1-$^$-2-$^$-3"), 6);
+	}
+
 }
